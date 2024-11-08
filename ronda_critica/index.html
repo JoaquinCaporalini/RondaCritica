@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RCC | Ronda Critica Computacional</title>
+    <link rel="shortcut icon" href="https://dcc.fceia.unr.edu.ar/sites/default/files/favicon_0.ico">
+
+    <style>
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    background-color: #300a24; /* Fondo oscuro */
+    background-image: url('https://www.transparenttextures.com/patterns/black-linen.png'); /* Textura de consola Ubuntu */
+    font-family: 'Courier New', Courier, monospace;
+    color: #fff;
+}
+
+header {
+    width: 100%;
+    background-color: #1d1d1d;
+    font-size: 0.65rem;
+}
+
+nav ul {
+    display: flex;
+    overflow-x: auto;
+    align-items: stretch;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    border: 1px solid transparent;
+    width: 500px;
+    text-align: center;
+}
+
+nav li.active {
+    font-weight: bold;
+    border-top: 3px solid #abc;
+    border-left: 1px solid #777;
+    border-right: 1px solid #777;
+    border-radius: 5px 5px 0 0;
+}
+
+nav li {
+    transition: background-color 0.1s, border-color 0.1s;
+}
+
+nav li:hover {
+    background-color: #234;
+    border-color: #234;
+}
+
+nav li.active:hover {
+    background-color: #1d1d1d;
+    border-color: transparent;
+
+    border-top: 3px solid #abc;
+    border-left: 1px solid #777;
+    border-right: 1px solid #777;
+}
+
+nav a {
+    box-sizing: border-box;
+    display: block;
+    padding: 0.35rem;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    user-select: none;
+    color: #fff;
+}
+
+.terminal {
+    width: 100%;
+    flex: 1;
+    word-break: break-all;
+    background-color: #1d1d1d;
+    border: 2px solid #abc;
+    padding-top: 0.75rem;
+}
+
+.terminal p {
+    margin: 1px 0;
+}
+
+.pre-like {
+    white-space: pre-wrap;
+}
+
+.terminal-content {
+    padding: 2px;
+}
+
+.natural {
+    word-break: break-word;
+}
+
+.promptline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.prompt {
+    color: #00ff00; /* Color verde del prompt */
+}
+
+.command {
+    color: #fff; /* Color blanco para los comandos */
+}
+
+.commit {
+    color: orange;
+}
+
+.commit > * {
+    color: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
+.p-4 { padding: 2rem; }
+    </style>
+</head>
+<body>
+<!-- 
+    Hola. Soy Joaquin, ¡qué curioso que nos encontremos de
+esta forma!¿Nunca pensaste en jugar a "Capturar la 
+bandera"? Si llegaste hasta este mensaje ese tipo de 
+ejercicios te pueden resultar muy interesantes.
+
+    Usualmente el encargado de dar inicio a la rondas es 
+"El director" pero para este caso (y como el webmaster que 
+soy) te doy la bienvenida a Ronda Crítica (Computacional), 
+lo de computacional va entre paréntesis porque es opcional, pero 
+que sea RCC suma para el marketing. Mi idea era dar una 
+justificación, origen y demás de como surge el proyecto, 
+pero este no es el caso y como todos sabemos la 
+documentación se crea cuando ya es tarde.
+
+    Tras haber abandonado el proyecto de documentar, algo que 
+no descarto hacer en un futuro, quiero concentrarme en 
+dejar constancia de las personitas que ayudan a que cada 
+ronda sea un éxito. Toda RCC comienza con "La 
+Seleccionadora" buscando un paper/ artículo que comentar. 
+Poner artículos en el pool hace su tarea más fácil, pero ella
+insiste en poner su mano para que la elección sea la mejor posible. 
+Por otro lado, el segundo eslabón de la cadena es 
+"El Editor" quien me ayuda a 
+redactar mails y avisos además de enviarlos, la existencia 
+de este ser es esencial porque mi rol como escritor dista 
+de ser entendible. La tercera persona que me gustaría 
+nombrar es "El PM". ¿Qué hace? Todos nos preguntamos lo 
+mismo. Sin embargo, cada vez que hay una traba, de alguna forma 
+aparece resulta. El último es "El Invitado", que es quien le da 
+vida a la Ronda. A estas personas, que ellas ya saben quienes son:
+¡gracias por organizar las Rondas!
+
+Aparte de los organizadores anónimos, me gustaría darles 
+identidades a las personas que siempre están no solo para dar una 
+mano, sino para construir.
+
+    FL: Encargado de mantener las encuestas, manejar el tema 
+        en redes y estar en los detalles.
+    CAF: Quien a través de las Cs. Sociales me ayuda a darme 
+        cuenta de cosas fuera de la caja.
+    PR: Quien me hizo dar cuenta de esta categoría nueva de 
+        las ciencias.
+    JIF: HostMaster, MailMaster y apoyo en cada evento.
+    LB: El creador de esta página, porque aunque sea el     
+        master, mi manejo de la web es solo peor que mi uso 
+        del castellano.
+    AZ: El gran fichaje para hacer más ágil coordinar y crear
+        cada una de las rondas.
+    DLZ: El que animó siempre a que el proyecto diera el 
+        primer paso y que de alguna manera (y sin irlos a 
+        comprar) garantiza los bizcochos. Fuente de invitados 
+        y garante de las rondas.
+    KES: Una gran ser humano, que me acompaña y evita que 
+        baje los brazos y me da ganas de seguir ¿Seguir con 
+        qué? SÍ. Sí a todo. 
+    ET al: Sí, seguro me olvido de alguien, es tarde, estoy 
+        cansado y fue una semana larga. (No importa cuando 
+        preguntes, estoy en 4to, otra vez.)
+
+Para cerrar que ya se está haciendo largo, no hay nada que me 
+ponga más contento que lo ocurrido instantes antes de la 
+primera ronda. Ver a muchas personas acogolladas en sala 
+docente en sillas, mesas o hasta en el piso ya hablando 
+antes del inicio me lleno de orgullo. Es lo que buscábamos (o por lo 
+menos una de las cosas que yo quería). Ver el DCC lleno es 
+parte de la idea de universidad, de debatir, pensar y 
+construir.
+
+PD:" sobre la crueldad de verdaderamente enseñar ciencias de la computación" lo vamos a ver en alguna ronda, denlo por hecho.  
+
+PD de la PD: Si nunca viniste estas invitado a sumarte, si  
+ya sos todo un veterano te pido que lo difundas, sugieras 
+cambios y sobre todo sigas viniendo además de apoderarte de 
+la ronda (aunque recorda que siempre que tomas un lock tenes 
+que soltarlo o.0).
+
+-->
+
+
+
+    <header>
+        <nav>
+            <ul>
+                <li class='active'><a href="">RondaCriticaComputacional@labdcc ~</a></li>
+                <li><a href="https://dcc.fceia.unr.edu.ar/rondacritica/papers/">RCC@localhoste ~/apuntes</a></li>
+                <li><a href="https://dcc.fceia.unr.edu.ar/rondacritica/fotos/">RCC@localhoste ~/fotos</a></li>
+                <li><a href="https://www.instagram.com/lambdacc/">vim contact.txt</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="terminal">
+        <div class="terminal-content"></div>
+    </div>
+    <script>
+        const commands = [
+            {
+                command: 'help',
+                response: () => `<p class="pre-like">
+
+Este es el servidor virtual de Ronda Crítica Computacional.
+
+Posicione el cursor sobre los hashes de los commits para leer los papers.
+
+<p>`,
+            },
+            {
+                command: 'git log',
+                response: loadCommits,
+            },
+            {
+                command: 'git status',
+                response: () => `<p class="pre-like">
+No hay nada para commitear.
+
+</p>`,
+            },
+            {
+                command: 'about',
+                response: () => `<p class="pre-like natural                                                                                                                                                                                                                                                                                                                     ">
+Desde hace rato un grupo de docentes y estudiantes venimos pensando en organizar un ciclo de encuentros para pensar, discutir, criticar, entender, no entender y hacernos preguntas sobre algunos avances de nuestra ciencia. La idea es elegir previamente algún paper/libro/material que nos resulte de interés y juntarnos luego a discutir sobre sus resultados, impacto, etc. Nos pareció razonable iniciar el ciclo, como una de las actividades de visibilización en el marco de la profunda crisis que está atravesando el sistema universitario
+
+</p>`,
+            },
+        ];
+
+        setTimeout(slowWriteCommands, 1000);
+
+        function slowWriteCommands() {
+            const terminalContent = document.querySelector('.terminal-content');
+
+            let i = 0;
+
+            writeCommand();
+
+            function writeCommand() {
+                if (i < commands.length) {
+                    const { command, response, cursor } = commands[i];
+                    terminalContent.innerHTML += `
+                        <p class="promptline"><span class="prompt">RondaCriticaComputacional@labdcc:~$</span>
+                            <span class="command">${command}</span>
+                        </p>
+                    `;
+
+                    if (response)
+                        terminalContent.innerHTML += response();
+
+                    i++;
+                    setTimeout(writeCommand, 1000);
+                }
+
+                else if (i === commands.length) {
+                    terminalContent.innerHTML += `
+                        <p class="promptline"><span class="prompt">RondaCriticaComputacional@labdcc:~$</span>
+                            <span id="cursor" style="background-color: #ffffff; width: 7px; height: 14px; display: inline-block;"></span>
+                        </p>
+                    `;
+                    setInterval(() => {
+                        const cursor = document.getElementById('cursor');
+                        cursor.style.display = cursor.style.display === 'none' ? null : 'none';
+                    }, 500);
+                    i++;
+                }
+            }
+        }
+
+        function loadCommits() {
+            const commits = [
+                { // A definir
+                    link: 'https://labdcc.fceia.unr.edu.ar/~jcaporalini/home/IntroPabloJoaquin.pdf',
+                    author: ' ',
+                    date: 'Thu Nov 21 18:30:00 2024 -0300 (aula: ..)',
+                    message: '[] \nInvitados: ',
+                },{ // Kathy
+                    link: 'https://dcc.fceia.unr.edu.ar/rondacritica/papers/20241107/1108.1791v3.pdf',
+                    author: 'Scott Aaronson',
+                    date: 'Thu Nov 07 18:30:00 2024 -0300 (aula: 05)',
+                    message: '[Compejidad] Why Philosophers Should Care About Computational Complexity\nInvitados: Katherine y Dante',
+                },{ // Kathy y Dante
+                    link: 'https://dcc.fceia.unr.edu.ar/rondacritica/papers/20241016/no_silver_bullet.pdf',
+                    author: 'Frederick P. Brooks, Jr',
+                    date: 'Thu Oct 16 18:30:00 2024 -0300 (aula: 11)',
+                    message: '[SoftIng] No Silver Bullet Essence And Accidents of Software Engineering'
+                },{ // Docentes de las casas de estudios
+                    link: 'https://dcc.fceia.unr.edu.ar/rondacritica/papers/extras/Carta_de_un_profesional_de_la_inform%c3%a1tica_a_otro.pdf',
+                    author: 'Docentes de informática del pais',
+                    date: 'Thu Oct 02 17:00:00 2024 -0300 (Plaza Montenegro)',
+                    message: '[HF] Carta de un profesional de la informática a otro \nInvitados: Comunidad universitaria',
+                },{ // Recomendación de Kathy y Ceci
+                    link: 'https://dcc.fceia.unr.edu.ar/rondacritica/papers/20241003/whyfp.pdf',
+                    author: 'John Hughes',
+                    date: 'Thu Oct 03 19:00:00 2024 -0300 (Aula 11)',
+                    message: '[Funcional] Why Functional Programming Matters \nInvitados: λC.C',
+                },{ // Recomendación de Agus M
+                    link: 'https://dcc.fceia.unr.edu.ar/rondacritica/papers/20240919/future-of-computing.pdf',
+                    author: 'Leslie Lamport',
+                    date: 'Thu Sep 19 18:30:00 2024 -0300 (Aula 24)',
+                    message: '[Código] The Future of Computing: Logic or Biology \nInvitados: λC.C',
+                },{ // Recomendación de Gurmen
+                    link: 'https://dcc.fceia.unr.edu.ar/rondacritica/papers/20240829/Thompson_1984_ReflectionsonTrustingTrust.pdf',
+                    author: 'Ken Thompson',
+                    date: 'Thu Aug 29 18:30:00 2024 -0300 (Aula 13)',
+                    message: '[Compiladores][Seguridad] Reflections on Trusting Trust\nInvitados: Guido Martínez Mauro Jaskelioff y Maximiliano Cristiá',
+                },{ //Recomendación de Dante
+                    link: 'https://dcc.fceia.unr.edu.ar/rondacritica/material/20240815/d41586-024-02420-7.pdf',
+                    author: 'Elizabeth Gibney',
+                    date: 'Thu Aug 15 16:00:00 2024 -0300 (Aula 01)',
+                    message: '[IA] AI MODELS FED AI-GENERATED DATA QUICKLY SPEW NONSENSE\n Invitados: Pablo Granitto y Lucas Uzal',
+                },
+            ];
+
+            content = "";
+
+            for (const { link, author, date, message } of commits) {
+                content += `
+                    <p class="commit">commit <a href="${link}" target="_blank">${makeCommitHash(link)}</a></p>
+                    <p class="pre-like">Author: ${author}</p>
+                    <p class="pre-like">Date:   ${date}</p>
+                    <p class="p-3 pre-like">${message}</p>
+                `;
+            }
+
+            return content;
+
+            function makeCommitHash(link) {
+                const base64Hash = horner(link).toString(16);
+                return base64Hash.substr(Math.max(0, base64Hash.length - 40)).padStart(40, '0');
+            }
+
+            function horner(s) {
+                return s.split('').reduce((a, b) => a * 31n + BigInt(b.charCodeAt(0)), 0n);
+            }
+        }
+    </script>
+</body>
+</html>
